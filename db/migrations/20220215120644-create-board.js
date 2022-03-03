@@ -1,20 +1,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Posts', {
+    await queryInterface.createTable('Board', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      image: {
-        type: Sequelize.TEXT,
-      },
-      title: {
-        type: Sequelize.TEXT,
-      },
-      description: {
-        type: Sequelize.TEXT,
       },
       userId: {
         type: Sequelize.INTEGER,
@@ -34,6 +25,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Posts');
+    await queryInterface.dropTable('Board');
   },
 };

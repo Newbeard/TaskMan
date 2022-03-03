@@ -1,9 +1,13 @@
-const { Post } = require('../db/models');
+const {
+  Board,
+} = require('../db/models');
 
 const homeController = async (req, res) => {
   try {
-    const cards = await Post.findAll();
-    res.render('home', { cards });
+    const boards = await Board.findAll();
+    res.render('home', {
+      boards,
+    });
   } catch (error) {
     console.error(error);
   }

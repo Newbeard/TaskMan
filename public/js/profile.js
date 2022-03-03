@@ -1,4 +1,4 @@
-// const profileCards = document.querySelector('.row');
+// const profileboards = document.querySelector('.row');
 
 // profileUser.addEventListener('click', async (event) => {
 //   const updateId = event.target.dataset.update;

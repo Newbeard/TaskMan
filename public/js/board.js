@@ -46,9 +46,9 @@
 //   }
 // });
 
-const profileCards = document.querySelector('.row');
+const profileboards = document.querySelector('.row');
 
-// profileCards.addEventListener('click', async (event) => {
+// profileboards.addEventListener('click', async (event) => {
 //   const openId = event.target.dataset.open;
 //   const updateId = event.target.dataset.update;
 //   const deleteId = event.target.dataset.delete;
@@ -65,26 +65,26 @@ const profileCards = document.querySelector('.row');
 //     }
 //   }
 
-  // if (updateId) {
-  //   const response = await fetch(`/post/${deleteId}`, {
-  //     method: 'PUT',
-  //   });
-  //   if (response.ok) {
-  //     container.insertAdjacentHTML('afterbegin', `<div class="col-3">${card}</div>`);
-  //   } else {
-  //     console.log('error');
-  //   }
-  // }
+// if (updateId) {
+//   const response = await fetch(`/post/${deleteId}`, {
+//     method: 'PUT',
+//   });
+//   if (response.ok) {
+//     container.insertAdjacentHTML('afterbegin', `<div class="col-3">${card}</div>`);
+//   } else {
+//     console.log('error');
+//   }
+// }
 
-  if (deleteId) {
-    const response = await fetch(`/post/${deleteId}`, {
-      method: 'DELETE',
-    });
-    if (response.ok) {
-      const card = event.target.closest('.col-3');
-      card.remove();
-    } else {
-      console.log('error');
-    }
+if (deleteId) {
+  const response = await fetch(`/post/${deleteId}`, {
+    method: 'DELETE',
+  });
+  if (response.ok) {
+    const card = event.target.closest('.col-3');
+    card.remove();
+  } else {
+    console.log('error');
   }
+}
 });

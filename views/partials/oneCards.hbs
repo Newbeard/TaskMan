@@ -2,16 +2,16 @@
 <div class="row">
   <div class="col-6" style="margin:0 auto">
     <div class="card">
-      <img src="{{cards.image}}" class="card-img-top" alt="{{cards.image}}">
+      <img src="{{boards.image}}" class="card-img-top" alt="{{boards.image}}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{cards.title}}</li>
-            <li class="list-group-item">{{cards.description}}</li>
+            <li class="list-group-item">{{boards.title}}</li>
+            <li class="list-group-item">{{boards.description}}</li>
           </ul>
           <center>
-            <button data-update={{cards.id}} type="button" class="btn btn-outline-primary edit" >Изменить</button>
-            <button data-delete={{cards.id}} type="button" class="btn btn-outline-primary delete">Удалить</button>
-            <a class="btn btn-outline-primary edit" href="/post/{{cards.id}}">Открыть</a>
+            <button data-update={{boards.id}} type="button" class="btn btn-outline-primary edit" >Изменить</button>
+            <button data-delete={{boards.id}} type="button" class="btn btn-outline-primary delete">Удалить</button>
+            <a class="btn btn-outline-primary edit" href="/post/{{boards.id}}">Открыть</a>
           </center>
         </div>
     </div>
