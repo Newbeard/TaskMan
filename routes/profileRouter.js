@@ -1,9 +1,7 @@
 const router = require('express').Router();
-const { profileGet, profileDelete, profileUpdate } = require('../controllers/profileController');
+const { profileGet } = require('../controllers/profileController');
 
 router.route('/')
-  .get(profileGet)
-  .put(profileUpdate)
-  .delete(profileDelete);
+  .get(profileGet);
 
 module.exports = router;

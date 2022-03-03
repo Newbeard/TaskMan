@@ -1,7 +1,7 @@
 const { checkIsSession } = require('../middleware/sessionIsCheck');
 
-const chatController = ('/chat', checkIsSession, (req, res) => {
-  res.render('chat');
-});
+const chatController = (req, res) => {
+  res.render('partials/chat');
+};
 
 module.exports = { chatController };

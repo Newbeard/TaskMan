@@ -1,16 +1,27 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Board', {
+    await queryInterface.createTable('Tasks', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      userId: {
+      title: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      boardId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
+          model: 'Boards',
+          key: 'id',
+        },
+      },
+      statusdId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Statuses',
           key: 'id',
         },
       },
@@ -25,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Board');
+    await queryInterface.dropTable('Tasks');
   },
 };

@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 /*--------------------*/
-input[type="password"],
+/* input[type="password"],
 [type="submit"],
 [type="text"],
 [type="date"] {
@@ -77,7 +77,7 @@ input[type="password"]:focus,
 [type="date"]:focus {
   -webkit-box-shadow: 1px 1px 5px 1px black;
           box-shadow: 1px 1px 5px 1px black;
-}
+} */
 .button {
   padding-left: 0px;
 }
@@ -112,7 +112,7 @@ input[type="password"]:focus,
 .menu {
   background: #22C1C3;
   background: -webkit-gradient(linear, left bottom, left top, from(#22C1C3), to(#FDBB2D));
-  background: linear-gradient(180deg, #22C1C3 0%, #FDBB2D 100%);
+  background: linear-gradient(180deg, #065557 0%, #af7a08 100%);
   padding: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -168,7 +168,7 @@ input[type="password"]:focus,
 .menu .menu_el2 .menu_text:hover {
   display: inline;
   cursor: pointer;
-  color: rgba(196, 43, 43, 0.466);
+  color: rgba(230, 17, 17, 0.466);
   background-repeat: repeat-x;
   background-size: 2px 5px;
 }
@@ -181,7 +181,7 @@ input[type="password"]:focus,
 .menu .menu_el3:hover {
   display: inline;
   cursor: pointer;
-  color: rgba(204, 211, 223, 0.466);
+  color: rgba(233, 13, 13, 0.466);
   background-repeat: repeat-x;
   background-size: 3px 1px;
 }
@@ -233,8 +233,70 @@ flex: 1;
 }
 
 .footer{
-background: linear-gradient(0deg, #22C1C3 0%, #FDBB2D 100%);
+background: linear-gradient(0deg, #065557 0%, #af7a08 100%);
 height: 100px;
 margin: 0;
 
+}
+
+a {
+  color: #FAFAFA;
+}
+a:hover {
+  color: #f70b0b;
+}
+
+#task{
+  width: 600px;
+  box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  border: 1px solid rgb(155, 170, 19);
+}
+
+.formtask{
+  max-width: 860px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+.progress {
+  background: linear-gradient(90deg, #209cff 0%, #68e0cf 100%);
+}
+.btnAddtask{
+  width: 200px;
+  box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  border: 1px solid rgb(155, 170, 19);
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  background-color:  #85711c;
+}
+
+.formRegLog{
+  max-width: 830px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+.formRegLog-input{
+  border: 1px solid rgb(155, 170, 19);
+  padding: 0.6rem 1rem;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+.btnLogReg{
+  padding: 0.6rem 1rem;
+  background: #85711c;
+  border-radius: 3px;
+  color: #fff;
 }
