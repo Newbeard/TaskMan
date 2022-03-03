@@ -1,0 +1,27 @@
+
+  <script defer src="/js/registration.js"></script>
+  <link href="/css/main.css" rel="stylesheet" type="text/css" >
+
+<form class="formRegistration form"  class="md-3" name="registration" action="/registration" method="post">
+  <div class="">
+    <input autocomplete="off" id="name" type="text" name="name"  placeholder="Имя" autofocus required/>
+  </div>
+   <div class="">
+     <input autocomplete="off" id="email" type="text" name="email" placeholder="Почта" required/>
+   </div>
+   <div class="">
+     <input id="password" type="password" name="password" minlength="6" placeholder="Пароль" required />
+   </div>
+   <div class="">
+    <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Повторите пароль"  required/>
+   </div>
+ 
+  <div><button type="submit" class="btn btn-primary">Регистрация</button></div>
+   
+   <div class="messageError"></div>
+   
+</form>
+
+
+
+

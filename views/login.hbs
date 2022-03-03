@@ -1,0 +1,14 @@
+<script defer src="/js/login.js"></script>
+<link href="/css/main.css" rel="stylesheet" type="text/css" >
+
+<form class="form md-6" name="login" action="/login" method="POST">
+
+ <div  class=""> <input autocomplete="off" id="email" type="text" name="email" placeholder="Почта" required/></div>
+ 
+ <div  class=""><input id="password" type="password" name="password" minlength="6" placeholder="Пароль" required /></div>
+  
+ <div><button type="submit" class="btn btn-primary">Войти</button></div>
+
+ <div class="messageError"></div>
+  
+</form>

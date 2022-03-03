@@ -1,0 +1,15 @@
+<div class="row" style="margin-bottom:50px;">
+  {{#each cards}}
+  <div class="col-3">
+    <div class="card">
+      <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{this.title}}</li>
+            <li class="list-group-item">{{this.description}}</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

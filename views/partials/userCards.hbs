@@ -1,0 +1,21 @@
+ <script defer src="/js/post.js"> </script>
+<div class="row">
+  {{#each cards}}
+  <div class="col-3">
+    <div class="card">
+      <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{this.title}}</li>
+            <li class="list-group-item">{{this.description}}</li>
+          </ul>
+          <center>
+            <button data-update={{this.id}} type="button" class="btn btn-outline-primary edit" >Изменить</button>
+            <button data-delete={{this.id}} type="button" class="btn btn-outline-primary delete">Удалить</button>
+            <a class="btn btn-outline-primary edit" href="/post/{{this.id}}">Открыть</a>
+          </center>
+        </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
