@@ -21,8 +21,7 @@ function webSocet(io, sessionParser) {
         where: { id },
         raw: true,
       });
-      console.log(newTask);
-      socket.broadcast.emit('sendNewTask', { newTask });
+      socket.broadcast.emit('sendNewTask', { newTask, task, id });
     });
     socket.on('deleteTask', async (payload) => {
       const { deleteId } = payload;
@@ -30,7 +29,7 @@ function webSocet(io, sessionParser) {
       await Task.destroy({
         where: { id: deleteId },
       });
-      socket.broadcast.emit('enterDeleteTask', { deleteId });
+      io.emit('enterDeleteTask', { deleteId });
     });
   });
 }
