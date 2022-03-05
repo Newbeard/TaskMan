@@ -1,6 +1,5 @@
 const express = require('express');
 const helmet = require('helmet');
-const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
@@ -14,7 +13,6 @@ const sessionParser = session(sessionConfig);
 const config = (app) => {
   // USE
   app.use(helmet());
-  app.use(morgan('dev'));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(path.join(process.env.PWD, 'public')));

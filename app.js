@@ -4,7 +4,6 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 const { config, sessionParser } = require('./config/config');
 const indexRouter = require('./routes/indexRouter');
-const checkConect = require('./helpers/checkConect');
 const { webSocet } = require('./webSocet');
 
 const PORT = process.env.PORT || 3000;
@@ -25,8 +24,6 @@ app.get('*', (req, res) => {
 
 webSocet(io, sessionParser);
 
-httpServer.listen(PORT, async () => {
-  checkConect(PORT);
-});
+httpServer.listen(PORT);
 
 module.exports = io;
