@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Board, Status }) {
       Task.belongsTo(Board, { foreignKey: 'boardId' });
-      Task.belongsTo(Status, { foreignKey: 'statusId' });
+      Task.belongsTo(Status, { foreignKey: 'statusdId' });
     }
   }
   Task.init({
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
     },
-    statusId: {
+    statusdId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'Statuses',

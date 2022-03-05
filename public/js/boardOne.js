@@ -1,16 +1,20 @@
+// const io = require('../../app');
+
 const socket = io();
-const item = document.querySelector('.item');
+const items = document.querySelectorAll('.item');
 const placeholders = document.querySelectorAll('.placeholder');
 
-for (const placeholder of placeholders) {
-  placeholder.addEventListener('dragover', dragover);
-  placeholder.addEventListener('dragenter', dragenter);
-  placeholder.addEventListener('dragleave', dragleave);
-  placeholder.addEventListener('drop', dragdrop);
+for (let i = 0; i < placeholders.length; i += 1) {
+  placeholders[i].addEventListener('dragover', dragover);
+  placeholders[i].addEventListener('dragenter', dragenter);
+  placeholders[i].addEventListener('dragleave', dragleave);
+  placeholders[i].addEventListener('drop', dragdrop);
 }
 
-item.addEventListener('dragstart', dragstart);
-item.addEventListener('dragend', dragend);
+for (let i = 0; i < items.length; i += 1) {
+  items[i].addEventListener('dragstart', dragstart);
+  items[i].addEventListener('dragend', dragend);
+}
 
 function dragstart(event) {
   event.target.classList.add('hold');
@@ -35,36 +39,60 @@ function dragleave(event) {
 }
 
 function dragdrop(event) {
+  const item = document.querySelector('.hold');
   event.target.classList.remove('hovered');
   event.target.append(item);
+  const task = event.target.dataset.statustask;
+  const id = item.dataset.idtask;
+  console.log(task, id);
+  socket.emit('addNewTask', {
+    task,
+    id,
+  });
+  socket.on('sendNewTask', (payload) => {
+    const {
+      newTask,
+    } = payload;
+    //  console.log(newTask);
+    // console.log(placeholders);
+    // console.log(placeholders[0].dataset.statustask);
+    for (let i = 0; i < placeholders.length; i += 1) {
+      console.log(placeholders[i].dataset.statustask, newTask.statusdId);
+      // console.log(placeholders[0]);
+      if (placeholders[i].dataset.statustask == newTask.statusdId) {
+        console.log('sucsses');
+        placeholders[i].insertAdjacentHTML('beforeend', `<div class="item" data-idTask="${newTask.id}" data-status="${newTask.statusdId} "draggable="true">${newTask.title}</div>`);
+      }
+    }
+  });
 }
 
-const { chatForm } = document.forms;
-const chatBlock = document.getElementById('chat');
+const {
+  formtask,
+} = document.forms;
+const startplaceholders = document.getElementById('startPlaceholder');
 
-chatForm.addEventListener('submit', (event) => {
+formtask.addEventListener('submit', (event) => {
   event.preventDefault();
-
+  const boardId = event.target.dataset.idboard;
   const {
-    text: {
-      value: text,
+    task: {
+      value: task,
     },
   } = event.target;
-
-  socket.emit('chat:outgoing', { text });
-
+  socket.emit('addTask', {
+    task,
+    boardId,
+  });
   event.target.reset();
 });
 
-socket.on('connect', () => {
-  console.log('Hi from connect');
-
-  socket.on('greetings', (payload) => {
-    chatBlock.insertAdjacentHTML('beforeend', `<p style="text-align: center;"><b>${payload.user}</b> is joined the chat</p>`);
-  });
-
-  socket.on('chat:incoming', (payload) => {
-    const { text, user } = payload;
-    chatBlock.insertAdjacentHTML('beforeend', `<p><b>${user}:</b> ${text}</p>`);
-  });
+socket.on('sendTask', (payload) => {
+  const {
+    tasks,
+  } = payload;
+  startplaceholders.insertAdjacentHTML('beforeend', `<div class="item" data-idTask="${tasks.id}" data-status="${tasks.statusdId}" draggable="true">${tasks.title}</div>`);
+  const newItems = startplaceholders.children;
+  newItems[newItems.length - 1].addEventListener('dragstart', dragstart);
+  newItems[newItems.length - 1].addEventListener('dragend', dragend);
 });

@@ -46,45 +46,45 @@
 //   }
 // });
 
-const profileboards = document.querySelector('.row');
+// const profileboards = document.querySelector('.row');
 
-// profileboards.addEventListener('click', async (event) => {
-//   const openId = event.target.dataset.open;
-//   const updateId = event.target.dataset.update;
-//   const deleteId = event.target.dataset.delete;
+// // profileboards.addEventListener('click', async (event) => {
+// //   const openId = event.target.dataset.open;
+// //   const updateId = event.target.dataset.update;
+// //   const deleteId = event.target.dataset.delete;
 
-//   if (openId) {
-//     const response = await fetch(`/post/${openId}`, {
-//       method: 'GET',
-//     });
-//     if (response.ok) {
-//       const urlCard = await response.json();
-//       window.location.href = urlCard.url;
-//     } else {
-//       console.log('error');
-//     }
-//   }
+// //   if (openId) {
+// //     const response = await fetch(`/post/${openId}`, {
+// //       method: 'GET',
+// //     });
+// //     if (response.ok) {
+// //       const urlCard = await response.json();
+// //       window.location.href = urlCard.url;
+// //     } else {
+// //       console.log('error');
+// //     }
+// //   }
 
-// if (updateId) {
+// // if (updateId) {
+// //   const response = await fetch(`/post/${deleteId}`, {
+// //     method: 'PUT',
+// //   });
+// //   if (response.ok) {
+// //     container.insertAdjacentHTML('afterbegin', `<div class="col-3">${card}</div>`);
+// //   } else {
+// //     console.log('error');
+// //   }
+// // }
+
+// if (deleteId) {
 //   const response = await fetch(`/post/${deleteId}`, {
-//     method: 'PUT',
+//     method: 'DELETE',
 //   });
 //   if (response.ok) {
-//     container.insertAdjacentHTML('afterbegin', `<div class="col-3">${card}</div>`);
+//     const card = event.target.closest('.col-3');
+//     card.remove();
 //   } else {
 //     console.log('error');
 //   }
 // }
-
-if (deleteId) {
-  const response = await fetch(`/post/${deleteId}`, {
-    method: 'DELETE',
-  });
-  if (response.ok) {
-    const card = event.target.closest('.col-3');
-    card.remove();
-  } else {
-    console.log('error');
-  }
-}
-});
+// });

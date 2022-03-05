@@ -9,19 +9,28 @@
           <div class="col-header done">Готовы</div>
       </div>
 
-      <div class="row">
-        <div class="placeholder">
-        {{>statusTask}}
+      <div class="row1">
+        <div id="startPlaceholder" class="placeholder" data-statusTask="1">
+          {{#each taskStart}}
+           {{>statusTaskStart}}
+             {{/each}}
         </div>
 
-        <div class="placeholder">
-
+        <div class="placeholder" data-statusTask="2">
+         {{#each taskProcess}}
+            {{>statusTaskProcess}}
+           {{/each}}
         </div>
 
-        <div class="placeholder">
-          
+        <div class="placeholder" data-statusTask="3">
+            {{#each taskEnd}}
+           {{>statusTaskEnd}}
+             {{/each}}
+
         </div>
       </div>
       
     </div>
     
+
+

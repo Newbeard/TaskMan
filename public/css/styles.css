@@ -20,6 +20,14 @@
   justify-content: space-around;
   margin-bottom: 1rem;
 }
+.row1 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
 
 .col-header {
   width: 350px;
@@ -49,8 +57,10 @@
 }
 
 .placeholder {
+  display:flex;
+  flex-direction: column;
   width: 350px;
-  height: 66px;
+  height: 80vh;
 }
 
 .start {

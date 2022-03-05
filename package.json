@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js --ignore ./sessions",
+    "start": "node app.js",
+    "dev": "nodemon app.js --ignore ./sessions",
     "enit": "npx sequelize db:create && npx sequelize db:migrate"
   },
   "keywords": [],

@@ -251,7 +251,7 @@ a:hover {
   box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
   border-radius: 5px;
   padding: 0.8rem 1rem;
-  color: #fff;
+  color: rgb(146, 87, 11);
   border: 1px solid rgb(155, 170, 19);
 }
 
@@ -299,4 +299,12 @@ a:hover {
   background: #85711c;
   border-radius: 3px;
   color: #fff;
+}
+
+.card-body{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  margin-bottom: 1rem;
 }

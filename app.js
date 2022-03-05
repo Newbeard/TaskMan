@@ -7,7 +7,6 @@ const indexRouter = require('./routes/indexRouter');
 const checkConect = require('./helpers/checkConect');
 const { webSocet } = require('./webSocet');
 
-
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -24,10 +23,10 @@ app.get('*', (req, res) => {
   res.status(404);
 });
 
+webSocet(io, sessionParser);
+
 httpServer.listen(PORT, async () => {
   checkConect(PORT);
 });
 
-webSocet(io, sessionParser);
-
-module.exports = { app };
+module.exports = io;

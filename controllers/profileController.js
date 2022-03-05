@@ -1,5 +1,5 @@
 const {
-  Board,
+  Board, Task,
 } = require('../db/models');
 
 const profileGet = async (req, res) => {
@@ -7,12 +7,25 @@ const profileGet = async (req, res) => {
   //   id,
   // } = req.session.user;
   try {
-    // const boards = await Board.findAll({
-    //   where: {
-    //     userId: id,
-    //   },
-    // });
-    res.render('profile');
+    const taskEnd = await Task.findAll({
+      where: {
+        boardId: 1,
+        statusdId: 3,
+      },
+    });
+    const taskStart = await Task.findAll({
+      where: {
+        boardId: 1,
+        statusdId: 1,
+      },
+    });
+    const taskProcess = await Task.findAll({
+      where: {
+        boardId: 1,
+        statusdId: 2,
+      },
+    });
+    res.render('profile', { boardId: 1, taskStart, taskProcess, taskEnd });
   } catch (error) {
     console.error(error);
   }
