@@ -39,6 +39,8 @@
 
 .item {
   display: flex;
+  flex-direction: row;
+  justify-content:space-between;
   align-items: center;
   width: 350px;
   height: 66px;
@@ -85,5 +87,13 @@
 
 .hovered{
   border-top: 5px dashed #c1910b; 
+  
+}
+
+.btn-delete{
+  background:none;
+  padding:auto;
+  width:10%;
+
   
 }

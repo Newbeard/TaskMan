@@ -1,4 +1,5 @@
 const { Task } = require('./db/models');
+
 function webSocet(io, sessionParser) {
   io.on('connection', (socket) => {
     socket.on('addTask', async (payload) => {
@@ -22,6 +23,14 @@ function webSocet(io, sessionParser) {
       });
       console.log(newTask);
       socket.broadcast.emit('sendNewTask', { newTask });
+    });
+    socket.on('deleteTask', async (payload) => {
+      const { deleteId } = payload;
+      console.log(deleteId);
+      await Task.destroy({
+        where: { id: deleteId },
+      });
+      socket.broadcast.emit('enterDeleteTask', { deleteId });
     });
   });
 }

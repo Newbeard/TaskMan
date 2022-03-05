@@ -1,5 +1,3 @@
-// const io = require('../../app');
-
 const socket = io();
 const items = document.querySelectorAll('.item');
 const placeholders = document.querySelectorAll('.placeholder');
@@ -42,6 +40,7 @@ function dragdrop(event) {
   const item = document.querySelector('.hold');
   event.target.classList.remove('hovered');
   event.target.append(item);
+
   const task = event.target.dataset.statustask;
   const id = item.dataset.idtask;
   console.log(task, id);
@@ -56,12 +55,22 @@ function dragdrop(event) {
     //  console.log(newTask);
     // console.log(placeholders);
     // console.log(placeholders[0].dataset.statustask);
+    // const taskDelete = document.querySelector(`.item[data-idtask="${id}"&data-status="${task}"]`);
+    // console.log(5555);
+    // console.log(taskDelete);
+    // for (let i = 0; i < items.length; i += 1) {
+    //   for (let j = 0; j < items.length; j += 1) {
+    //     if (items[i].dataset.idtask == id && items[j].dataset.status == task) {
+    //       items[i].remove();
+    //       console.log(items[i]);
+    //     }
+    //   }
+    // }
+    // console.log(item);
     for (let i = 0; i < placeholders.length; i += 1) {
-      console.log(placeholders[i].dataset.statustask, newTask.statusdId);
-      // console.log(placeholders[0]);
       if (placeholders[i].dataset.statustask == newTask.statusdId) {
-        console.log('sucsses');
-        placeholders[i].insertAdjacentHTML('beforeend', `<div class="item" data-idTask="${newTask.id}" data-status="${newTask.statusdId} "draggable="true">${newTask.title}</div>`);
+        placeholders[i].insertAdjacentHTML('beforeend', `<div class="item" data-idtask="${newTask.id}" data-status="${newTask.statusdId} "draggable="true"><div>${newTask.title}}</div><button  class="btn-delete" type="button" data-iddelete="{{this.id}}">удалить</button></div></div>`);
+        event.target.reset();
       }
     }
   });
@@ -91,8 +100,24 @@ socket.on('sendTask', (payload) => {
   const {
     tasks,
   } = payload;
-  startplaceholders.insertAdjacentHTML('beforeend', `<div class="item" data-idTask="${tasks.id}" data-status="${tasks.statusdId}" draggable="true">${tasks.title}</div>`);
+  startplaceholders.insertAdjacentHTML('beforeend', `<div class="item" data-idtask="${tasks.id}" data-status="${tasks.statusdId}" draggable="true"><div>${tasks.title}}</div><button  class="btn-delete" type="button" data-iddelete="{{this.id}}">удалить</button></div>`);
   const newItems = startplaceholders.children;
   newItems[newItems.length - 1].addEventListener('dragstart', dragstart);
   newItems[newItems.length - 1].addEventListener('dragend', dragend);
+});
+
+const deleteTaskBtns = document.querySelector('.row1');
+deleteTaskBtns.addEventListener('click', (event) => {
+  const deleteId = event.target.dataset.iddelete;
+  if (deleteId) {
+    socket.emit('deleteTask', {
+      deleteId,
+    });
+  }
+  socket.on('enterDeleteTask', (payload) => {
+    const {
+      deleteId,
+    } = payload;
+    console.log(deleteId);
+  });
 });
