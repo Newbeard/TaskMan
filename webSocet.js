@@ -9,7 +9,6 @@ function webSocet(io, sessionParser) {
     });
     socket.on('addNewTask', async (payload) => {
       const { task, id } = payload;
-      console.log(task, id);
       await Task.update({
         statusdId: task,
       }, {
@@ -25,7 +24,6 @@ function webSocet(io, sessionParser) {
     });
     socket.on('deleteTask', async (payload) => {
       const { deleteId } = payload;
-      console.log(deleteId);
       await Task.destroy({
         where: { id: deleteId },
       });

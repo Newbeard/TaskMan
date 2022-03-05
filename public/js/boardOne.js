@@ -43,7 +43,6 @@ function dragdrop(event) {
 
   const task = event.target.dataset.statustask;
   const id = item.dataset.idtask;
-  console.log(task, id);
   socket.emit('addNewTask', {
     task,
     id,
@@ -85,7 +84,6 @@ socket.on('connect', () => {
       task,
       id,
     } = payload;
-    console.log(task, id);
     const deleteTask = document.querySelector(`.item[data-idtask='${id}']`);
     deleteTask.remove();
     for (let i = 0; i < placeholders.length; i += 1) {
